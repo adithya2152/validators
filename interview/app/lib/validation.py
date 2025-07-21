@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from typing import Callable, Any, List
 
-# --- Start: Validation Logging Setup ---
+ 
 validation_logger = logging.getLogger('analytics_validator')
 validation_logger.setLevel(logging.INFO)
 validation_logger.propagate = False
@@ -13,7 +13,7 @@ if not validation_logger.hasHandlers():
     validation_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
     validation_handler.setFormatter(validation_formatter)
     validation_logger.addHandler(validation_handler)
-# --- End: Validation Logging Setup ---
+ 
 
 class AnalyticsValidator:
     """
@@ -71,9 +71,7 @@ class AnalyticsValidator:
         """Returns the final validation status DataFrame."""
         return self.report_df
 
-    # --- Private INPUT Validation Methods ---
-
-    # FIX: This method was missing from the previous version.
+ 
     def _validate_inputs_for_face_extraction(self, video_frames: List, dnn_net: Any, predictor: Any) -> (bool, str):
         if not isinstance(video_frames, list) or not video_frames:
             return False, "Input 'video_frames' must be a non-empty list."
